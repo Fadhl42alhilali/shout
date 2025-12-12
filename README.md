@@ -4,6 +4,12 @@ Simple speech-to-text for Wayland/Hyprland. Press a key to record, press again t
 
 Works great with AI coding agents like Claude Code - they're forgiving of typos and excellent at semantic reasoning, so transcription doesn't need to be perfect.
 
+
+
+https://github.com/user-attachments/assets/3197004d-1f44-4433-872e-b5c14b28bda2
+
+
+
 ## Installation (Omarchy/Arch Linux)
 
 ```bash
