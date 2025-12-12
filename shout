@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+# shout - Simple speech-to-text for Wayland/Hyprland
+#
+# Press keybind once to start recording, again to stop and transcribe.
+# Text is automatically typed into the focused application.
+
+STATE_FILE="/tmp/shout.pid"
+AUDIO_FILE="/tmp/shout.wav"
+
+# Find whisper-cli: check PATH, then common locations
+if command -v whisper-cli &>/dev/null; then
+    WHISPER_CLI="whisper-cli"
+elif [[ -x "$HOME/.local/bin/whisper-cli" ]]; then
+    WHISPER_CLI="$HOME/.local/bin/whisper-cli"
+elif [[ -x "/usr/local/bin/whisper-cli" ]]; then
+    WHISPER_CLI="/usr/local/bin/whisper-cli"
+else
+    notify-send -t 3000 "shout" "Error: whisper-cli not found"
+    exit 1
+fi
+
+# Find model: check common locations (AUR package, then manual installs)
+if [[ -f "/usr/share/whisper.cpp-model-tiny/ggml-tiny.bin" ]]; then
+    WHISPER_MODEL="/usr/share/whisper.cpp-model-tiny/ggml-tiny.bin"
+elif [[ -f "$HOME/.local/share/whisper/models/ggml-tiny.bin" ]]; then
+    WHISPER_MODEL="$HOME/.local/share/whisper/models/ggml-tiny.bin"
+else
+    notify-send -t 3000 "shout" "Error: whisper model not found"
+    exit 1
+fi
+
+if [[ -f "$STATE_FILE" ]]; then
+    # Stop recording
+    kill "$(cat "$STATE_FILE")" 2>/dev/null
+    rm "$STATE_FILE"
+
+    notify-send -t 1000 -h string:x-canonical-private-synchronous:shout "shout" "Processing..."
+
+    # Transcribe (file is positional arg, strip leading whitespace)
+    TEXT=$("$WHISPER_CLI" -m "$WHISPER_MODEL" --no-timestamps "$AUDIO_FILE" 2>/dev/null | grep -v '^\[' | sed 's/^[[:space:]]*//' | tr -d '\n')
+
+    # Type it out and press Enter
+    if [[ -n "$TEXT" ]]; then
+        wtype "$TEXT"
+        wtype -k Return
+    else
+        notify-send -t 2000 "shout" "No speech detected"
+    fi
+
+    rm -f "$AUDIO_FILE"
+else
+    # Start recording
+    notify-send -t 0 -h string:x-canonical-private-synchronous:shout "shout" "Recording..."
+    pw-record --rate=16000 --channels=1 --format=s16 "$AUDIO_FILE" &
+    echo $! > "$STATE_FILE"
+fi
